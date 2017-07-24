@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Network</string>
+    <string name="thumbnail">Thumbnail</string>
+    <string name="account_label">Personal Network</string>
+</resources>

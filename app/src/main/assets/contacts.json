@@ -1,0 +1,24 @@
+{
+  "contacts": [
+    {
+      "name": "Alice",
+      "description": "Met her at a bar"
+    },
+    {
+      "name": "Bob",
+      "description": "Met him at a club"
+    },
+    {
+      "name": "Carol",
+      "description": "Met her at a drive-in"
+    },
+    {
+      "name": "Doug",
+      "description": "Met him on the elevator"
+    },
+    {
+      "name": "Eevee",
+      "description": "Met her at a farm"
+    }
+  ]
+}
