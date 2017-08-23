@@ -16,39 +16,39 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
  * Created by jacob on 2017-07-04.
  */
 
-public class ContactsSection extends StatelessSection {
-  private ArrayList<Contact> mArray;
-  private String mHeaderText;
+public class AgentsSection extends StatelessSection {
+  private ArrayList<Agent> agentArrayList;
+  private String headerText;
 
-  public ContactsSection( ArrayList<Contact> array, String headerText) {
-    super(new SectionParameters.Builder(R.layout.contact_row)
+  public AgentsSection(ArrayList<Agent> array, String headerText) {
+    super(new SectionParameters.Builder(R.layout.agent_row)
     .headerResourceId(R.layout.section_header)
     .build());
 
-    mHeaderText = headerText;
-    mArray = array;
+    this.headerText = headerText;
+    agentArrayList = array;
 
   }
 
   public static class HeaderViewHolder extends RecyclerView.ViewHolder {
-    public TextView mContactListHeader;
+    public TextView agentListHeader;
 
     public HeaderViewHolder(View v) {
       super(v);
-      mContactListHeader = (TextView) v.findViewById(R.id.contact_list_header);
+      agentListHeader = (TextView) v.findViewById(R.id.contact_list_header);
     }
   }
 
-  public static class ContactsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    private ImageView mContactImage;
-    private TextView mContactName;
-    private Contact mContact;
+  public static class AgentHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private ImageView agentImage;
+    private TextView agentName;
+    private Agent agent;
 
-    public ContactsHolder(View v) {
+    public AgentHolder(View v) {
       super(v);
 
-      mContactImage = (ImageView) v.findViewById(R.id.contact_list_thumbnail);
-      mContactName = (TextView) v.findViewById(R.id.contact_list_title);
+      agentImage = (ImageView) v.findViewById(R.id.agent_list_thumbnail);
+      agentName = (TextView) v.findViewById(R.id.agent_list_title);
       v.setOnClickListener(this);
     }
 
@@ -56,26 +56,26 @@ public class ContactsSection extends StatelessSection {
     public void onClick(View v) {
       Context context = itemView.getContext();
       Intent showContactIntent = new Intent(context, ContactActivity.class);
-      showContactIntent.putExtra("contact", mContact.toBundle());
+      showContactIntent.putExtra("agent", agent.toBundle());
       context.startActivity(showContactIntent);
     }
   }
   @Override
   public int getContentItemsTotal() {
-    return mArray.size();
+    return agentArrayList.size();
   }
 
   @Override
   public RecyclerView.ViewHolder getItemViewHolder(View view) {
-    return new ContactsHolder(view);
+    return new AgentHolder(view);
   }
 
   @Override
   public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
-    ContactsHolder contactsHolder = (ContactsHolder) holder;
-    Contact contact = mArray.get(position);
-    contactsHolder.mContactName.setText(contact.name);
-    contactsHolder.mContact = contact;
+    AgentHolder agentHolder = (AgentHolder) holder;
+   Agent agent = agentArrayList.get(position);
+    agentHolder.agentName.setText(agent.getIdentifier());
+    agentHolder.agent = agent;
 
   }
 
@@ -87,6 +87,6 @@ public class ContactsSection extends StatelessSection {
   @Override
   public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder) {
     HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
-    headerViewHolder.mContactListHeader.setText(mHeaderText);
+    headerViewHolder.agentListHeader.setText(headerText);
   }
 }
