@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
     sectionAdapter = new SectionedRecyclerViewAdapter();
 
-    agentManager.loadSharedPrefs(this);
+    //agentManager.loadSharedPrefs(this);
     updateAgentListSections();
 
     agentsListView.setAdapter(sectionAdapter);

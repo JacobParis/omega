@@ -11,11 +11,10 @@ import java.util.ArrayList;
 
 public class ContactActivity extends AppCompatActivity {
 
-  private TextView mContactName;
-  private ListView mContactDetails;
-  private ListAdapter mDetailAdapter;
-  private ArrayList<Detail> mDetails;
-  private Agent agent;
+  private TextView contactName;
+  private ListView contactDetails;
+  private ListAdapter detailAdapter;
+  private ArrayList<Detail> details;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -23,23 +22,25 @@ public class ContactActivity extends AppCompatActivity {
 
     Intent intent = this.getIntent();
     Bundle bundle = intent.getBundleExtra("agent");
+    contactName = (TextView) findViewById(R.id.contact_page_name);
+    String type = bundle.getString("type");
+    details = new ArrayList<>();
 
-    agent = Agent.fromBundle(bundle);
-    setTitle(agent.getIdentifier());
+    if(type.equals("person")) {
 
-    mContactName = (TextView) findViewById(R.id.contact_page_name);
-    mContactName.setText(agent.getIdentifier());
+      Person person = Person.fromBundle(bundle);
+      setTitle(person.getIdentifier());
 
-    mDetails = new ArrayList<>();
-    /*
-    // Add Numbers
-    for(int i = 0; i < agent.numbers.size(); i++) {
-      mDetails.add(new Detail("Phone Number", agent.numbers.get(i)));
+      contactName.setText(person.getIdentifier());
+
+      for (String number : person.getNumbers()) {
+        details.add(new Detail("Phone Number", number));
+      }
     }
-  */
-    mContactDetails = (ListView) findViewById(R.id.contact_page_details);
-    mDetailAdapter = new DetailAdapter(this, mDetails);
-    mContactDetails.setAdapter(mDetailAdapter);
+
+    contactDetails = (ListView) findViewById(R.id.contact_page_details);
+    detailAdapter = new DetailAdapter(this, details);
+    contactDetails.setAdapter(detailAdapter);
 
   }
 }

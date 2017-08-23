@@ -44,20 +44,18 @@ public class AgentManager {
             final String SORT_ORDER = ContactsContract.Data.DISPLAY_NAME;
             Cursor phones = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, SORT_ORDER);
             while (phones.moveToNext()) {
-                Agent agent = new Agent();
+                Person person = new Person();
+                person.setIndex(agents.size());
+                person.setFirstName(phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)));
 
-                agent.setIndex(agents.size());
-                agent.setIdentifier(phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)));
-
-                /*Check if name already exists
-                if(agents.containsKey(agent.getIdentifier())) {
-                    agent = agents.get(agent.getIdentifier());
-                    agents.
+                //Check if name already exists
+                if(agents.contains(person)) {
+                    person = (Person) agents.get(agents.indexOf(person));
                 }
 
-                //contact.numbers.add(phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)));
-        */
-                agents.add(agent);
+                person.addNumber(phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)));
+
+                agents.add(person);
             }
             phones.close();
         } catch (Exception e) {
@@ -123,7 +121,6 @@ public class AgentManager {
 
     public void loadSharedPrefs(Context context) {
         SharedPreferences pref = context.getSharedPreferences("omega_agents", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
 
         Map<String, ?> all = pref.getAll();
         Iterator<String> it = all.keySet().iterator();
@@ -147,7 +144,7 @@ public class AgentManager {
 
                 Object o = all.get(prefKey);
                 if (o == null) {
-                    // ignore
+                    continue;
                 } else if (o instanceof CharSequence) {
                     b.putString(currentKey, o.toString());
                 }

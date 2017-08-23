@@ -3,6 +3,7 @@ package com.halfheartstudios.network;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -73,9 +74,18 @@ public class AgentsSection extends StatelessSection {
   @Override
   public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
     AgentHolder agentHolder = (AgentHolder) holder;
-   Agent agent = agentArrayList.get(position);
-    agentHolder.agentName.setText(agent.getIdentifier());
-    agentHolder.agent = agent;
+
+    if(agentArrayList.get(position) instanceof Person) {
+      Person person = (Person) agentArrayList.get(position);
+      agentHolder.agentName.setText("Person: " + person.getIdentifier());
+      agentHolder.agent = person;
+    } else if (agentArrayList.get(position) instanceof Agent) {
+      Agent agent = agentArrayList.get(position);
+      agentHolder.agentName.setText(agent.getIdentifier());
+      agentHolder.agent = agent;
+    } else {
+      Log.e("ERROR", "Something's fucky");
+    }
 
   }
 

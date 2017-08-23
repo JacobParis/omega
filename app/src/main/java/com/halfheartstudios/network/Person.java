@@ -59,8 +59,29 @@ public class Person extends Agent {
         return this;
     }
 
+    public Person addNumber(String number) {
+        this.numbers.add(number);
+
+        return this;
+    }
+
+    public ArrayList<String> getNumbers() {
+        return this.numbers;
+    }
+
+    public Person setNumbers(ArrayList<String> numbers) {
+        this.numbers = numbers;
+
+        return this;
+    }
     public Person setPrimaryOrganisation(String  primaryOrganisation) {
         this.primaryOrganisation =  primaryOrganisation;
+
+        return this;
+    }
+
+    public Person setOrganisations(ArrayList<String> organisations) {
+        this.organisations = organisations;
 
         return this;
     }
@@ -77,9 +98,16 @@ public class Person extends Agent {
         return this;
     }
 
+    public Person setIdentifier(String identifier) {
+        super.setIdentifier(identifier);
+
+        return this;
+    }
+
     @Override
     public Bundle toBundle() {
         Bundle b = new Bundle();
+        b.putString("type", "person");
         b.putString("firstName", firstName);
         b.putString("surname", surname);
         b.putString("primaryName", primaryName);
@@ -96,11 +124,16 @@ public class Person extends Agent {
     public static Person fromBundle(Bundle b) {
         Person person = new Person();
 
-        return person.setSurname(b.getString("surname"))
-        .setPrimaryName(b.getString("primaryName"))
-        .setPrimaryNumber(b.getString("primaryNumber"))
-        .setPrimaryOrganisation(b.getString("primaryOrganisation"))
-        .setGender(b.getString("gender"))
-        .setBirthday(b.getString("birthday"));
+        person.setFirstName(b.getString("firstName"));
+        person.setSurname(b.getString("surname"));
+        person.setPrimaryName(b.getString("primaryName"));
+        person.setPrimaryNumber(b.getString("primaryNumber"));
+        person.setNumbers(b.getStringArrayList("numbers"));
+        person.setPrimaryOrganisation(b.getString("primaryOrganisation"));
+        person.setOrganisations(b.getStringArrayList("organisations"));
+        person.setGender(b.getString("gender"));
+        person.setBirthday(b.getString("birthday"));
+
+        return person;
     }
 }
