@@ -10,24 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/agent_page_documents"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/agent_page_name"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:id="@+id/agent_page_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/agent_page_photo"
-            android:text="TextView" />
-
         <ImageView
-            android:id="@+id/agent_page_photo"
+            android:id="@+id/entity_page_photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -38,10 +22,25 @@
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_person" />
 
+        <TextView
+            android:id="@+id/entity_page_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/entity_page_photo"
+            android:text="TextView" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/entity_page_component_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/entity_page_name"
+            android:layout_alignParentStart="true" />
+
     </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/agent_page_fab"
+        android:id="@+id/entity_page_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

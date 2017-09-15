@@ -17,11 +17,11 @@ public class EntityAddActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agent_add_document);
+        setContentView(R.layout.component_add_activity);
 
-        documentTypeSpinner = (Spinner) findViewById(R.id.document_add_type);
-        documentValue = (EditText) findViewById(R.id.document_add_field);
-        fab = (FloatingActionButton) findViewById(R.id.document_add_save);
+        documentTypeSpinner = (Spinner) findViewById(R.id.component_add_type);
+        documentValue = (EditText) findViewById(R.id.component_add_field);
+        fab = (FloatingActionButton) findViewById(R.id.component_add_save);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -16,7 +16,7 @@
         tools:text="Title test text"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
-        android:id="@+id/contact_list_header" />
+        android:id="@+id/section_list_header" />
 
     <View
         android:layout_width="match_parent"

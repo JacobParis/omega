@@ -38,10 +38,10 @@ public class EntityViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agent_page);
+        setContentView(R.layout.entity_view_activity);
 
-        entityName = (TextView) findViewById(R.id.agent_page_name);
-        fab = (FloatingActionButton) findViewById(R.id.agent_page_fab);
+        entityName = (TextView) findViewById(R.id.entity_page_name);
+        fab = (FloatingActionButton) findViewById(R.id.entity_page_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Context context = fab.getContext();
@@ -51,7 +51,7 @@ public class EntityViewActivity extends AppCompatActivity {
             }
         });
 
-        documentsListView = (RecyclerView) findViewById(R.id.agent_page_documents);
+        documentsListView = (RecyclerView) findViewById(R.id.entity_page_component_list);
         documentsListLayoutManager = new LinearLayoutManager(this);
         documentsListView.setLayoutManager(documentsListLayoutManager);
 

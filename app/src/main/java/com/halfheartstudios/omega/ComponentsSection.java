@@ -23,7 +23,7 @@ public class ComponentsSection extends StatelessSection {
     private String headerText;
 
     public ComponentsSection(ArrayList<Component> components, String headerText, SectionedRecyclerViewAdapter adapter) {
-        super(new SectionParameters.Builder(R.layout.document).headerResourceId(R.layout.section_header).build());
+        super(new SectionParameters.Builder(R.layout.component).headerResourceId(R.layout.section_header).build());
 
         this.componentArrayList = components;
         this.headerText = headerText;
@@ -38,8 +38,8 @@ public class ComponentsSection extends StatelessSection {
         public ComponentItemViewHolder(View v) {
             super(v);
 
-            documentBodyText = (TextView) v.findViewById(R.id.document_body);
-            documentHeaderText = (TextView) v.findViewById(R.id.document_head);
+            documentBodyText = (TextView) v.findViewById(R.id.component_body);
+            documentHeaderText = (TextView) v.findViewById(R.id.component_head);
             v.setOnClickListener(this);
         }
 
@@ -64,7 +64,7 @@ public class ComponentsSection extends StatelessSection {
         public ComponentHeaderViewHolder(View v) {
             super(v);
 
-            headerText = (TextView) v.findViewById(R.id.contact_list_header);
+            headerText = (TextView) v.findViewById(R.id.section_list_header);
         }
     }
 

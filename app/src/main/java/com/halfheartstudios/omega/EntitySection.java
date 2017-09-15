@@ -24,7 +24,7 @@ public class EntitySection extends StatelessSection {
     private String headerText;
 
     public EntitySection(ArrayList<Entity> array, String headerText) {
-        super(new SectionParameters.Builder(R.layout.agent_row)
+        super(new SectionParameters.Builder(R.layout.entity_row)
                 .headerResourceId(R.layout.section_header)
                 .build());
 
@@ -38,7 +38,7 @@ public class EntitySection extends StatelessSection {
 
         public HeaderViewHolder(View v) {
             super(v);
-            entityListHeader = (TextView) v.findViewById(R.id.contact_list_header);
+            entityListHeader = (TextView) v.findViewById(R.id.section_list_header);
         }
     }
 
@@ -50,8 +50,8 @@ public class EntitySection extends StatelessSection {
         public EntityHolder(View v) {
             super(v);
 
-            entityImage = (ImageView) v.findViewById(R.id.agent_list_thumbnail);
-            entityName = (TextView) v.findViewById(R.id.agent_list_title);
+            entityImage = (ImageView) v.findViewById(R.id.entity_list_thumbnail);
+            entityName = (TextView) v.findViewById(R.id.entity_list_title);
             v.setOnClickListener(this);
         }
 

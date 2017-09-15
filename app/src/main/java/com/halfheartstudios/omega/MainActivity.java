@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    setContentView(R.layout.entity_list_activity);
 
 
     //getApplicationContext().getSharedPreferences("omega", 0).edit().clear().commit();
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    agentsListView = (RecyclerView) findViewById(R.id.contacts_list);
+    agentsListView = (RecyclerView) findViewById(R.id.entity_list);
     agentsListLayoutManager = new LinearLayoutManager(this);
     agentsListView.setLayoutManager(agentsListLayoutManager);
 
