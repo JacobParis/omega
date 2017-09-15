@@ -5,4 +5,8 @@
         android:id="@+id/action_import"
         android:title="@string/action_import"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_refresh"
+        android:title="@string/action_refresh"
+        app:showAsAction="never"/>
 </menu>

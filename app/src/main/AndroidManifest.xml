@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.halfheartstudios.network">
+          package="com.halfheartstudios.omega">
 
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
@@ -14,17 +14,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.halfheartstudios.omega.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ContactActivity"/>
+        <activity android:name="com.halfheartstudios.omega.EntityViewActivity"/>
 
         <service
-            android:name=".AuthenticatorService"
+            android:name="com.halfheartstudios.omega.ContactsAuthenticatorService"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator"/>
@@ -35,7 +35,9 @@
                 android:resource="@xml/authenticator"/>
         </service>
 
-        <activity android:name=".ContactAddActivity">
+        <activity android:name="com.halfheartstudios.omega.EntityAddActivity">
+        </activity>
+        <activity android:name="com.halfheartstudios.omega.ComponentAddActivity">
         </activity>
     </application>
 

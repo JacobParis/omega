@@ -3,4 +3,71 @@
     <string name="thumbnail">Thumbnail</string>
     <string name="account_label">Personal Network</string>
     <string name="action_import">Import Contacts</string>
+    <string name="action_refresh">Refresh Agents</string>
+
+    <!-- Accounts -->
+    <string name="document_type_account">Account Name</string>
+
+    <!-- Spinner -->
+    <string-array name="document_type_person">
+        <item>Project</item>
+        <item>Group</item>
+        <item>Organisation</item>
+        <item>Homepage</item>
+        <item>Website</item>
+        <item>Name</item>
+        <item>Surname</item>
+        <item>Nickname</item>
+        <item>Email</item>
+        <item>PhoneNumber</item>
+        <item>Birthday</item>
+        <item>Interest</item>
+        <item>Disinterest</item>
+        <item>Image</item>
+        <item>Logo</item>
+        <item>Tip Jar</item>
+        <item>Account Name</item>
+        <item>Plan</item>
+    </string-array>
+
+    <string-array name="document_type_organisation">
+        <item>Project</item>
+        <item>Group</item>
+        <item>Member</item>
+        <item>Plan</item>
+        <item>Founded Date</item>
+        <item>Image</item>
+        <item>Logo</item>
+        <item>Name</item>
+        <item>Website</item>
+        <item>Homepage</item>
+        <item>Email</item>
+    </string-array>
+
+    <string-array name="document_type_group">
+        <item>Project</item>
+        <item>Organisation</item>
+        <item>Member</item>
+        <item>Plan</item>
+        <item>Image</item>
+        <item>Logo</item>
+        <item>Name</item>
+        <item>Website</item>
+        <item>Homepage</item>
+        <item>Email</item>
+    </string-array>
+
+    <string-array name="document_type_project">
+        <item>Member</item>
+        <item>Organisation</item>
+        <item>Group</item>
+        <item>Plan</item>
+        <item>Image</item>
+        <item>Logo</item>
+        <item>Name</item>
+        <item>Website</item>
+        <item>Homepage</item>
+    </string-array>
+
+
 </resources>
