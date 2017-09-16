@@ -7,6 +7,6 @@ package com.halfheartstudios.omega.components;
 public class NullComponent extends Component {
 
     public NullComponent() {
-        super(null, null);
+        super(null);
     }
 }

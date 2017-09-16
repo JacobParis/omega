@@ -1,7 +1,10 @@
 package com.halfheartstudios.omega;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -30,7 +33,7 @@ public class ComponentsSection extends StatelessSection {
         this.adapter = adapter;
     }
 
-    public class ComponentItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ComponentItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener {
         private TextView documentBodyText;
         private TextView documentHeaderText;
         private Component component;
@@ -41,17 +44,37 @@ public class ComponentsSection extends StatelessSection {
             documentBodyText = (TextView) v.findViewById(R.id.component_body);
             documentHeaderText = (TextView) v.findViewById(R.id.component_head);
             v.setOnClickListener(this);
+            v.setOnCreateContextMenuListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            Context context = v.getContext();
             int position = adapter.getPositionInSection(this.getAdapterPosition());
             Component component = componentArrayList.get(position);
-            EntityManager.getInstance().deleteComponent(component, context);
-            componentArrayList.remove(position);
-            notifyItemRemovedFromSection(position);
+
         }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+            int position = this.getAdapterPosition();
+
+            int sectionPosition = adapter.getPositionInSection(this.getAdapterPosition());
+            Component component = componentArrayList.get(sectionPosition);
+
+            String entityId = component.getEntityValue();
+            if(entityId == null) {
+                menu.add(position, v.getId(), 0, "Link");
+                menu.add(position, v.getId(), 0, "Rename");
+
+            } else {
+                menu.add(position, v.getId(), 0, "Unlink");
+                menu.add(position, v.getId(), 0, "Follow");
+            }
+
+            menu.add(position, v.getId(), 0, "Delete");//groupId, itemId, order, title
+        }
+
+
     }
 
     public void notifyItemRemovedFromSection(int position) {
@@ -95,8 +118,13 @@ public class ComponentsSection extends StatelessSection {
         ComponentItemViewHolder itemViewHolder = (ComponentItemViewHolder) holder;
         Component component = componentArrayList.get(position);
 
-        itemViewHolder.documentHeaderText.setText(component.getHeaderText());
+        itemViewHolder.documentHeaderText.setText(component.getType());
         itemViewHolder.documentBodyText.setText(component.getValue());
         itemViewHolder.component = component;
+
+        if(component.getEntityValue() != null) {
+            itemViewHolder.documentBodyText.setTextColor(0xff3399CC);
+        }
     }
+
 }

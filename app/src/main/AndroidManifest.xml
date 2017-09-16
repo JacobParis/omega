@@ -35,8 +35,6 @@
                 android:resource="@xml/authenticator"/>
         </service>
 
-        <activity android:name="com.halfheartstudios.omega.EntityAddActivity">
-        </activity>
         <activity android:name="com.halfheartstudios.omega.ComponentAddActivity">
         </activity>
     </application>

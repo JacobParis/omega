@@ -58,9 +58,9 @@ public class EntitySection extends StatelessSection {
         @Override
         public void onClick(View v) {
             Context context = itemView.getContext();
-            Intent showContactIntent = new Intent(context, EntityViewActivity.class);
-            showContactIntent.putExtra("identifier", entity.getId());
-            context.startActivity(showContactIntent);
+            Intent showEntityIntent = new Intent(context, EntityViewActivity.class);
+            showEntityIntent.putExtra("identifier", entity.getId());
+            context.startActivity(showEntityIntent);
         }
     }
     @Override
@@ -81,7 +81,7 @@ public class EntitySection extends StatelessSection {
         entityHolder.entity = entity;
 
         String name = "(null)";
-        Component nameComponent = entity.getComponentWithIntent("Name");
+        Component nameComponent = ComponentManager.getComponentWithIntent("Name", entity);
         if(!(nameComponent instanceof NullComponent)) {
             name = nameComponent.getValue();
         }

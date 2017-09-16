@@ -1,29 +1,33 @@
 package com.halfheartstudios.omega.components;
 
+import android.graphics.ComposePathEffect;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Created by Jacob on 2017-09-08.
  */
 
 public class PhoneNumber extends Component {
-    private String id;
     private String value;
 
-    private ArrayList<String> intents;
+    private HashSet<String> intents;
 
-    public PhoneNumber(String entityId) {
-        super("PhoneNumber", entityId);
-        intents = new ArrayList<>();
+    public PhoneNumber() {
+        super("PhoneNumber");
+        intents = new HashSet<>();
         intents.add("Name");
         intents.add("Contact");
     }
 
+    @Override
     public String getValue() {
         return this.value;
     }
 
-    public PhoneNumber setValue(String number) {
+    @Override
+    public Component setValue(String number) {
         // Parse individual characters
         char[] chars = number.toUpperCase().toCharArray();
         for(int i = 0; i < number.length(); i++) {
@@ -62,27 +66,7 @@ public class PhoneNumber extends Component {
     }
 
     @Override
-    public ArrayList<String> getIntents() {
+    public HashSet<String> getIntents() {
         return this.intents;
-    }
-
-    @Override
-    public String toString() {
-        return "PhoneNumber@" + this.getId() + ":" + this.getValue();
-    }
-
-    @Override
-    public PhoneNumber setId(String id) {
-        return (PhoneNumber) super.setId(id);
-    }
-
-    public static PhoneNumber fromString(String entityId, String componentString) {
-        if (!componentString.startsWith("PhoneNumber@")) {
-            throw new Error("Not a phone number string");
-        }
-        String id = componentString.replaceAll(".*@|:.*", "");
-        String value = componentString.replaceAll(".*:", "");
-
-        return new PhoneNumber(entityId).setId(id).setValue(value);
     }
 }
